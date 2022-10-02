@@ -6,6 +6,7 @@ const result = document.getElementsByClassName('result');
 var board = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'p'];
 var content = '';
 var currentPlayer = 1;
+var turns = 0;
 
 btn[0].addEventListener('click', addBoardEvent)
 
@@ -24,6 +25,7 @@ function playerTurn(e){
 
         board[num] = content;
         e.target.innerHTML = content;
+        turns++;
         winCondition();
     }
 }
@@ -39,6 +41,10 @@ function winCondition(){
         board[2] == board[4] && board[4] == board[6] ) {
             result[0].innerHTML=content;
             board = ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'];
+        } else {
+            if (turns>=9) {
+                result[0].innerHTML=`No one, it' a draw :(`;
+            }
         }
 };
 
